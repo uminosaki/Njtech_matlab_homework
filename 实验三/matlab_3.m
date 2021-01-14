@@ -1,5 +1,5 @@
 %原音频信号
-[y,Fs]=audioread('matlab_useful.mp3');
+[y,Fs]=audioread('matlab_useful.mp3');%在此输入Matlab工作目录下的音频文件名称，或者也可以输入完整路径
 sound(y,Fs);%播放语音
 figure(11) 
 plot(y);%画出原始语音时域图
@@ -30,7 +30,7 @@ title('FIR低通滤波器');
 y1=filter(b,a,y);
 figure(22)
 %subplot(2,1,1)
-plot(abs(fft(y))
+plot(y)
 title('FIR低通滤波器滤波前的时域波形');
 xlabel('时间（ms)'); 
 ylabel('幅值'); 
@@ -42,17 +42,17 @@ ylabel('幅值');
         
 sound(y1,Fs);%播放滤波后的语音信号
         
-F0=fft(y1,1024);
+F0=fft(y1);
 f=Fs*(0:511)/1024;
 figure(23)
-y2=fft(y,1024);
+y2=fft(y);
 subplot(2,1,1);
-plot(f,abs(y2(1:512)));
+plot(abs(y2));
 title('FIR低通滤波器滤波前的频谱')
 xlabel('频率/Hz');
 ylabel('幅值');
 subplot(2,1,2)
-F2=plot(f,abs(F0(1:512)));
+F2=plot(abs(F0));
 title('FIR低通滤波器滤波后的频谱');
 xlabel('频率/Hz');
 ylabel('幅值');
